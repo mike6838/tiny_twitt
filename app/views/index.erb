@@ -1,23 +1,17 @@
-<div class="container">
-  <h1>Welcome to Sinatra!</h1>
-  <p>Hello, world!</p>
-
-  <table>
-    <tr>
-      <th>File Description</th>
-      <th>File Location</th>
-    </tr>
-    <tr>
-      <td>This view file</td>
-      <td><code><%= __FILE__.gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The layout file</td>
-      <td><code><%= File.expand_path('../layout.erb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The current controller</td>
-      <td><code><%= File.expand_path('../../controllers/index.rb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-  </table>
+<div class="user_box">
+  <h3 class="user_legit_name"><%=@current_user.fname%> <%=@current_user.lname%></h3>
+  <p class="user_username"><%=@current_user.username %></p>
+  <div>
+    <div>Twits: <%=@current_user.twits.count%></div>
+    <div>Following: <%=@current_user.followees.count%></div>
+    <div>Followers: 16<%#=@current_user.followers.count%></div>
+  </div>
 </div>
+
+<div class="all_twits">
+    <%@twits_to_show.each do |twit|%>
+    <div class="one_twit"><h3 class="twit_username"><%=twit.user.username%></h3><p class="twit_content"><%=twit.content%></p></div>
+    <%end%>
+<div>
+
+
