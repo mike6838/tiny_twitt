@@ -18,8 +18,13 @@ post '/login' do
 end
 
 post '/signup' do
-
-redirect 'profile/:id'
+  User.create(username: params[:username],
+              fname: params[:fname],
+              lname: params[:lname],
+              email: params[:email],
+              password: params[:password])
+  @current_user = User.find(session[:user_id])
+  redirect 'profile/:id'
 end
 
 get 'profile/:id' do
