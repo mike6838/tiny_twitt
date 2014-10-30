@@ -17,6 +17,11 @@ post '/login' do
 
 end
 
+post '/signup' do
+
+redirect 'profile/:id'
+end
+
 get 'profile/:id' do
   erb :profile
 end
