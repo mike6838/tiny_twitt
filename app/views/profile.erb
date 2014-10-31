@@ -1,11 +1,11 @@
-<% @current_user.fname + " " + @current_user.lname %>
+<% current_user.fname + " " + current_user.lname %>
 <section>
     <h2>Twits</h2>
     <% if current_user %>
       <%= erb :_twit_form %>
     <% end %>
     <table>
-      <% Twit.find(@current_user.id).reverse_each do |twit| %>
+      <% Twit.find(current_user.id).reverse_each do |twit| %>
       <% hash = Digest::MD5.hexdigest(twit.user.email.downcase) %>
         <tr>
           <td>

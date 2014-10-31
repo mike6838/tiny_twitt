@@ -2,11 +2,18 @@ class User < ActiveRecord::Base
   # Remember to create a migration!
   has_many :twits
 
-  has_many :followings, foreign_key: :followee_id, class_name: 'Following'
-  has_many :followees, :through => :followings
+  has_many :followings, foreign_key: :follower_id, dependent: :destroy
+  has_many :followed, through: :followings, dependent: :destroy
 
-  # has_many :reverse_followings, foreign_key: :followee_id, class_name: 'Following'
-  # has_many :followees, :through => :reverse_followings
+
+  def followers
+    rels = Following.where(followed_id: self.id)
+    followers = []
+    rels.each do |rel|
+      followers << User.find(rel.follower_id)
+    end
+    followers
+  end
 
   def time_difference
     seconds_since = (Time.now.to_i - self.created_at.to_i)
@@ -34,6 +41,17 @@ class User < ActiveRecord::Base
   def minutes(seconds_since)
     minutes = seconds_since / 60
     "#{minutes} minutes ago"
+  end
+
+  include BCrypt
+
+  def password
+    @password ||= Password.new(secure_password)
+  end
+
+  def password=(new_password)
+    @password = Password.create(new_password)
+    self.secure_password = @password
   end
 
 end

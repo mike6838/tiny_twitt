@@ -9,6 +9,6 @@ end
 end
 
 100.times do
-  Following.create(:follower_id => User.all.sample.id, :followee_id => User.all.sample.id)
+  Following.create(:follower_id => User.all.sample.id, :followed_id => User.all.sample.id)
 end
 
