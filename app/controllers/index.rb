@@ -1,11 +1,11 @@
+require 'bcrypt'
 get '/' do
   # Look in app/views/index.erb
-  if session[:user_id]
 
-    @current_user = User.find(session[:user_id])
-
+  if session[:user_id] = 2
+    current_user = User.find(session[:user_id])
     @twits_to_show = []
-    @current_user.followees.each do |followee|
+    current_user.followees.each do |followee|
       @twits_to_show << followee.twits
     end
     @twits_to_show.flatten!
@@ -23,17 +23,25 @@ get '/login' do
 end
 
 post '/login' do
-  session[:user_id] = User.find_by(:username => params[:username], :password => params[:password]).id
-  redirect '/'
+
+  @user = User.find_by_username(params[:username])
+  if @user.password == params[:password]
+    session[:user_id] = @user.id
+    current_user
+    redirect '/profile/:id'
+  else
+    redirect_to '/login'
+  end
+
 end
 
+
 post '/signup' do
-  u = User.create(username: params[:username],
-              fname: params[:fname],
-              lname: params[:lname],
-              email: params[:email],
-              password: params[:password])
-  redirect '/login'
+  @user = User.new(params[:user])
+  @user.password = params[:password]
+  @user.save!
+  session[:user_id] = @user.id
+  redirect 'profile/:id'
 end
 
 get '/profile/:id' do
