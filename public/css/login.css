@@ -1,12 +1,11 @@
 .navigation {
   background-image: url('birdie.gif');
   background-repeat: no-repeat;
-  border-bottom: 1px solid gray;
   margin: 20px;
   margin-right: 10px;
 }
 
-body {
+.body_login {
   background-image: url('shaggy.png');
   background-repeat: no-repeat;
   background-size: 100%;
@@ -28,7 +27,7 @@ body {
 }
 
 .jumbotron {
-  width: 20%;
+  width: 40%;
   margin: 100px 60%;
   padding-top: 10px;
   opacity: 0.9;

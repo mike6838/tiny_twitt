@@ -1,8 +1,40 @@
-<form action="/signup" method="post">
+<!--
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+
+ <script>
+  $(document).ready(function() {
+
+    $("#frm").validate({
+      rules:
+      {
+        username: {
+          required: true,
+          rangelength: [5, 10]
+        },
+        password: {
+          required: true,
+          rangelength: [6, 15]
+        },
+        password2: {
+          required: true,
+          equalTo: "#pass1"
+        },
+        email: {
+          required: true,
+          email: true
+        }
+      }
+      }); //validate ends here
+    }); //end of jquery
+  </script> -->
+
+<form id="frm" action="/signup" method="post">
   <input type="text" name="username" placeholder="Username"/><br>
   <input type="text" name="fname" placeholder="First Name"/><br>
   <input type="text" name="lname" placeholder="Last Name"/><br>
   <input type="text" name="email" placeholder="email"/><br>
   <input type="password" name="password" placeholder="Password"/><br>
+  <input type="password" name="password2" placeholder="Password"/><br>
   <input type="submit" name="Sign up!"/>
 </form>

@@ -1,0 +1,21 @@
+  <div class="twit-container col-md-5">
+    <div class="posts">
+      <div class="follower-info">
+        <ul>
+          <li class="follower-icons">Followers: <p><%= @user.followed_users.length %></p></li>
+          <li id="center-icon" class="follower-icons">Following: <p><%= @user.followers.length %></p></li>
+          <li class="follower-icons">Tweets: <p><%= @user.twits.length %></p></li>
+        </ul>
+      </div>
+      <br>
+      <div class="row">
+        <div class="blockquote-box clearfix">
+          <% @user.twits.reverse_each.each do |twit| %>
+          <h4><%= @user.username %></h4>
+            <p><%= twit.content %></p>
+            <p><%= twit.time_difference %></p>
+            <% end %>
+          </div>
+      </div>
+  </div>
+</div>

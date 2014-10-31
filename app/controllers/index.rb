@@ -1,7 +1,7 @@
 require 'bcrypt'
 get '/' do
   # Look in app/views/index.erb
-  if session[:user_id]
+  if session[:user_id] != nil
     current_user = User.find(session[:user_id])
     @twits_to_show = []
     current_user.followed_users.each do |followed|
@@ -33,6 +33,9 @@ post '/login' do
   end
 end
 
+get '/users' do
+  erb :user_list
+end
 
 post '/signup' do
   @user = User.new(fname:params[:fname], lname:params[:lname], username:params[:username], email:params[:email])

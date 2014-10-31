@@ -1,0 +1,11 @@
+<div class="navigation">
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <!-- Starts header partial home page -->
+    <% if current_user != nil%>
+      <%= erb :_header_login %>
+    <% else %>
+      <%= erb :_header_logout %>
+    <% end %>
+    <!-- Ends header partial home  -->
+  </nav>
+</div>

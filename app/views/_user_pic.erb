@@ -1,0 +1,17 @@
+
+
+ <div class="user-infor-container col-md-2">
+      <div class="user-info">
+
+        <% hash = Digest::MD5.hexdigest(@user.email.downcase) %>
+
+
+
+
+        <img class="profile-pic" src="http://www.gravatar.com/avatar/<%= "#{hash}" %>"alt="" class="img-rounded img-responsive" />
+           <div class="user-info" class="col-sm-2 row-md-4">
+        <br/>
+        <p><%= @user.fname + " " + @user.lname %></p> <small><cite title="Source Title"><%= @user.username %></cite></small>
+      </div>
+      </div>
+    </div>

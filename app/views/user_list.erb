@@ -1,0 +1,12 @@
+
+
+<% User.all.each do |user| %>
+<% hash = Digest::MD5.hexdigest(user.email.downcase) %>
+<img src="http://www.gravatar.com/avatar/<%= "#{hash}" %>"alt="" class="img-rounded img-responsive" />
+  <a href="/profile/<%= user.id %>">
+    <p><%= user.username %></p>
+
+
+
+  </a>
+<% end %>
