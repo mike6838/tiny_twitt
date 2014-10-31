@@ -20,16 +20,23 @@ get '/login' do
 end
 
 post '/login' do
-
+  #authenticate a user
+  @user = User.find(username: params[:username])
+  if @user.authenticate(params[:password])
+    session[:user_id] = @user.id
+  else
+    redirect '/login'
+  end
 end
 
 post '/signup' do
-  User.create(username: params[:username],
+  @user = User.create(username: params[:username],
               fname: params[:fname],
               lname: params[:lname],
               email: params[:email],
-              password: params[:password])
-  @current_user = User.find(session[:user_id])
+              password_hash: params[:password])
+
+  session[:user_id] = @user.id
   redirect 'profile/:id'
 end
 

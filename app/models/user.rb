@@ -36,4 +36,20 @@ class User < ActiveRecord::Base
     "#{minutes} minutes ago"
   end
 
+  def password
+    @password ||= Password.new(password_hash)
+  end
+
+  def password=(new_password)
+    @password = Password.create(new_password)
+    self.password_hash = @password
+  end
+
+  def authenticate(password)
+    self.password_hash == password
+  end
+
+  def authenticated?
+    session[:user_id] != nil
+  end
 end
