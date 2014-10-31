@@ -1,0 +1,58 @@
+.navigation {
+  background-image: url('birdie.gif');
+  background-repeat: no-repeat;
+  border-bottom: 1px solid gray;
+  margin: 20px;
+  margin-right: 10px;
+}
+
+body {
+  background-image: url('shaggy.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 0px -84px;
+
+}
+
+.nav-pills {
+  margin-top: 5px;
+}
+
+
+#button {
+  margin-right: 10px;
+}
+
+.logo {
+  padding: 15px 200px;
+}
+
+.jumbotron {
+  width: 20%;
+  margin: 100px 60%;
+  padding-top: 10px;
+  opacity: 0.9;
+
+}
+
+.form-control {
+  margin-top: 5px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+}
+
+.footer > ul {
+  text-align: center;
+}
+
+.links {
+  display: inline-block;
+  color:white;
+
+  padding: 0px 20px;
+}
+

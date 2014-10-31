@@ -1,0 +1,90 @@
+.navigation {
+  padding-top: 10px;
+  margin: 20px;
+}
+
+body {
+  padding-top:30px;
+
+}
+
+.nav-pills {
+  margin-top: 5px;
+}
+
+.nav-pills > li.logout {
+  float: right;
+}
+
+
+.user-infor-container {
+  margin: 10px 140px;
+}
+
+.user-info {
+  display: block;
+
+}
+
+
+.blog-posts {
+  float:left;
+  padding: 20px 20px;
+  width: 20%;
+  margin: 10px auto;
+}
+
+.posts {
+  width: 100%;
+  margin: 10px auto;
+  border: 1px solid rgb(211, 210, 210);
+  border-radius: 4px;
+  padding-left: 37px;
+
+}
+
+.glyphicon-lg{font-size:3em}
+
+.twit-container {
+  float:right;
+  margin-top: 120px;
+}
+
+.profile-pic {
+  width: 70%;
+}
+
+.twit-container {
+  margin-right:20%;
+
+}
+
+.follower-info {
+  height: 50px;
+  border-bottom: 1px solid rgb(211, 210, 210);
+  width: 90%;
+  margin-top: 10px;
+}
+
+.follower-icons {
+  display: inline-block;
+  padding: 0px 30px;
+}
+
+.follower-icons > p {
+  text-align: center;
+}
+
+#center-icon {
+  border-right: 1px solid rgb(211, 210, 210);
+  border-left: 1px solid rgb(211, 210, 210);
+}
+
+.row {
+  margin-left: -25;
+}
+
+
+
+
+
