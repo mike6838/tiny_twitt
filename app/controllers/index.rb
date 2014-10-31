@@ -20,6 +20,7 @@ get '/login' do
 end
 
 post '/login' do
+  session[:user_id] = nil
   #authenticate a user
   @user = User.find_by(username: params[:username])
 
@@ -38,8 +39,7 @@ post '/signup' do
               fname: params[:fname],
               lname: params[:lname],
               email: params[:email],
-              password_hash: params[:password])
-
+              password_hash: BCrypt::Password.create(params[:password]))
   session[:user_id] = @user.id
   redirect 'profile/:id'
 end

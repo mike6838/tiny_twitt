@@ -46,9 +46,8 @@ class User < ActiveRecord::Base
   end
 
   def authenticate(password)
-    # puts password
-    # puts self.password_hash
-    self.password_hash == password
+    p_h = BCrypt::Password.new(self.password_hash)
+    self.password_hash == p_h
   end
 
   def authenticated?
