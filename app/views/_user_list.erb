@@ -1,0 +1,3 @@
+<% User.all.each do |user|%>
+  <a href="/profile/<%=user.id %>"><p><%=user.username %></p></a>
+<% end %>

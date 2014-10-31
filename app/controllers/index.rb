@@ -27,11 +27,10 @@ post '/login' do
   if @user.password == params[:password]
     session[:user_id] = @user.id
     current_user
-    redirect '/profile/:id'
+    redirect "/profile/#{@user.id}"
   else
     redirect_to '/login'
   end
-
 end
 
 
@@ -40,11 +39,11 @@ post '/signup' do
   @user.password = params[:password]
   @user.save!
   session[:user_id] = @user.id
-  redirect 'profile/:id'
+  redirect "/profile/#{@user.id}"
 end
 
 get '/profile/:id' do
-  current_user = User.find(session[:user_id])
+  @user = User.find(params[:id])
   erb :profile
 end
 
@@ -55,6 +54,11 @@ end
 post '/twit/:id' do
   Twit.create(:content => params[:content], :user_id => params[:id])
   redirect "/profile/#{params[:id].to_s}"
+end
+
+post '/profile/:id/follow' do
+  current_user.followed_users << User.find(params[:id])
+  redirect "/profile/#{params[:id]}"
 end
 
 get '/logout' do
