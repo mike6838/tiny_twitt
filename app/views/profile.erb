@@ -1,23 +1,22 @@
-<% @current_user.fname + " " + @current_user.lname %>
+<%=@current_user.fname%> <%=@current_user.lname %>
 <section>
     <h2>Twits</h2>
-    <% if current_user %>
+
+    <% if @current_user %>
       <%= erb :_twit_form %>
     <% end %>
-    <table>
-      <% Twit.find(@current_user.id).reverse_each do |twit| %>
-      <% hash = Digest::MD5.hexdigest(twit.user.email.downcase) %>
-        <tr>
-          <td>
-            <img src="http://www.gravatar.com/avatar/<%= "#{hash}" %>">
-          </td>
-          <td>
-            <p><b><%= "#{twit.user.firstname} #{twit.user.lastname}" %></b><span><%= twit.time_difference %></span></p>
-            <p><%= twit.content %></p>
-          </td>
-        </tr>
-      <% end %>
-    </table>
+
+    <% hash = Digest::MD5.hexdigest(@current_user.email.downcase) %>
+    <img src="http://www.gravatar.com/avatar/<%= "#{hash}" %>">
+
+    <%@current_user.twits.reverse_each.each do |twit| %>
+        <div class="one_twit">
+          <h3 class="twit_username"><%=@current_user.username%></h3>
+          <p class="twit_content"><%=twit.content%></p>
+          <span><%=twit.time_difference %></span></div>
+      <%end%>
+
+      <a href="/logout">Logout Here</a>
 </section>
 
 

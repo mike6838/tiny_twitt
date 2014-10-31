@@ -1,7 +1,7 @@
 
 <div class="user_box">
   <h3 class="user_legit_name"><%=@current_user.fname%> <%=@current_user.lname%></h3>
-  <p class="user_username"><%=@current_user.username %></p>
+  <p class="user_username"><a href="/profile/<%=@current_user.id%>"><%=@current_user.username %></a></p>
   <div>
     <div>Twits: <%=@current_user.twits.count%></div>
     <div>Following: <%=@current_user.followees.count%></div>
@@ -10,8 +10,8 @@
 </div>
 
 <div class="all_twits">
-    <%@twits_to_show.each do |twit|%>
-    <div class="one_twit"><h3 class="twit_username"><%=twit.user.username%></h3><p class="twit_content"><%=twit.content%></p></div>
+    <%@twits_to_show.reverse_each.each do |twit|%>
+    <div class="one_twit"><h3 class="twit_username"><%=twit.user.username%></h3><p class="twit_content"><%=twit.content%></p><span><%= twit.time_difference %></span></div>
     <%end%>
 <div>
 
