@@ -5,8 +5,8 @@ get '/' do
   if session[:user_id] = 2
     current_user = User.find(session[:user_id])
     @twits_to_show = []
-    current_user.followees.each do |followee|
-      @twits_to_show << followee.twits
+    current_user.followed.each do |followed|
+      @twits_to_show << followed.twits
     end
     @twits_to_show.flatten!
     erb :index

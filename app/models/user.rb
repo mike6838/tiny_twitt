@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   has_many :twits
 
   has_many :followings, foreign_key: :follower_id, dependent: :destroy
-  has_many :followed, through: :followings, dependent: :destroy
 
+  has_many :followed_users, through: :followings, source: :followed, dependent: :destroy
 
   def followers
     rels = Following.where(followed_id: self.id)
