@@ -1,11 +1,11 @@
 
 <div class="user_box">
   <h3 class="user_legit_name"><%= current_user.fname %> <%= current_user.lname %></h3>
-  <p class="user_username"><%= current_user.username %></p>
+  <p class="user_username"><a href="/profile/<%=current_user.id%>"><%= current_user.username %></a></p>
   <div>
     <div>Twits: <%= current_user.twits.count %></div>
-    <div>Following: <%= current_user.followed.count %></div>
-    <div>Followers: <%= current_user.followers.count %></div>
+    <div>Following: <%= current_user.followed_users.count %></div>
+    <div>Followers: <%= current_user.followed_users.count %></div>
   </div>
 </div>
 
