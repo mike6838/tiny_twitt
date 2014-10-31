@@ -46,10 +46,12 @@ class User < ActiveRecord::Base
   end
 
   def authenticate(password)
+    # puts password
+    # puts self.password_hash
     self.password_hash == password
   end
 
   def authenticated?
-    session[:user_id] != nil
+    !session[:user_id].nil?
   end
 end

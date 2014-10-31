@@ -22,9 +22,13 @@ end
 post '/login' do
   #authenticate a user
   @user = User.find_by(username: params[:username])
-  if @user.authenticate(params[:password])
-    session[:user_id] = @user.id
+
+  if !@user.nil? && @user.authenticate(params[:password])
+    puts "authenticated!!!"
+    puts session[:user_id] = @user.id
+    redirect 'profile/:id'
   else
+    puts "Authentication FAILED"
     redirect '/login'
   end
 end
